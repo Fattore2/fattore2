@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fattore 2</title>
+    <link rel="stylesheet" href="stile.css">
+    <style>
+        @font-face {
+            font-family: 'TradeWinds';
+            src: url('TradeWinds-Regular.ttf') format('truetype');
+        }
+        body {
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
+        }
+        video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            opacity: 1;
+            transition: opacity 0.5s;
+        }
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1;
+        }
+        .image-container {
+            position: relative;
+            display: inline-block;
+            border-radius: 50%;
+            overflow: hidden;
+            width: 300px;
+            height: 300px;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeInCenter 1s forwards;
+            animation-delay: 0.5s;
+        }
+        h2 {
+            font-family: 'TradeWinds', cursive;
+            font-size: 3rem;
+            color: #FF5733;
+            opacity: 0;
+            animation: fadeInCenter 1s forwards;
+            animation-delay: 1s;
+        }
+        @keyframes fadeInCenter {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        /* Stili per il menu */
+        .menu {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1;
+        }
+        .menu-button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .bar {
+            width: 30px;
+            height: 4px;
+            background-color: #FF5733;
+            margin: 4px 0;
+            transition: transform 0.3s;
+        }
+        .bar:nth-child(1) {
+            transform: rotate(15deg); /* Ondulata */
+        }
+        .bar:nth-child(2) {
+            transform: skew(-20deg); /* Obliqua */
+        }
+        .bar:nth-child(3) {
+            transform: rotate(-15deg); /* Zigzag */
+        }
+        .menu-list {
+            display: none; /* Nascondi la lista di opzioni */
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+            opacity: 0; /* Inizialmente invisibile */
+            transition: opacity 0.5s ease; /* Aggiungi un effetto di dissolvenza */
+        }
+        .menu-list li {
+            padding: 15px; /* Aumenta il padding per una lista più grande */
+            cursor: pointer;
+            font-size: 1.2rem; /* Aumenta la dimensione del testo */
+            color: white; /* Colore del testo */
+            transition: background-color 0.3s; /* Transizione per il colore di sfondo */
+        }
+        .menu-list li:hover {
+            background-color: rgba(255, 87, 51, 0.7); /* Sfumatura al passaggio del mouse */
+        }
+    </style>
+</head>
+<body>
+    <video id="background-video" autoplay muted>
+        <source src="vid bianco e nero casco.mp4" type="video/mp4">
+        Il tuo browser non supporta il video.
+    </video>
+    
+    <div class="content">
+        <div class="image-container">
+            <img src="fattore2logocerchio.jpg" alt="Logo di Fattore 2">
+        </div>
+        <h2>Welcome</h2>
+    </div>
+
+    <!-- Menu interattivo -->
+    <div class="menu">
+        <button class="menu-button" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </button>
+        <ul class="menu-list" id="menuList">
+            <li onclick="alert('Il Gruppo')">Il Gruppo</li>
+            <li onclick="alert('La Palestra')">La Palestra</li>
+            <li onclick="alert('La Nostra Idea')">La Nostra Idea</li>
+            <li onclick="alert('Tariffe e Informazioni Utili')">Tariffe e Informazioni Utili</li>
+        </ul>
+    </div>
+
+    <script>
+        const videoSources = [
+            'vid bianco e nero casco.mp4',
+            'vid bianco e nero scarpe.mp4',
+            'video bianco e nero corda.mp4',
+            'video bianco e nero rinvii.mp4'
+        ];
+        const videoElement = document.getElementById('background-video');
+        let currentVideo = 0;
+
+        function changeVideo() {
+            currentVideo++;
+            if (currentVideo < videoSources.length) {
+                videoElement.src = videoSources[currentVideo];
+            } else {
+                currentVideo = 0;
+                videoElement.src = videoSources[currentVideo];
+            }
+            videoElement.play();
+        }
+
+        videoElement.addEventListener('ended', () => {
+            const nextVideoStartTime = videoElement.duration - 0.5;
+            videoElement.currentTime = nextVideoStartTime;
+            changeVideo();
+        });
+
+        videoElement.src = videoSources[currentVideo];
+
+        function toggleMenu() {
+            const menuList = document.getElementById('menuList');
+            if (menuList.style.display === 'none' || menuList.style.display === '') {
+                menuList.style.display = 'block'; // Mostra il menu
+                // Attendi un attimo per far partire l'effetto di dissolvenza
+                setTimeout(() => {
+                    menuList.style.opacity = '1'; // Rendi visibile
+                }, 10);
+            } else {
+                menuList.style.opacity = '0'; // Rendi invisibile
+                setTimeout(() => {
+                    menuList.style.display = 'none'; // Nascondi il menu dopo l'animazione
+                }, 500); // Tempo della dissolvenza
+            }
+        }
+    </script>
+</body>
+</html>
