@@ -42,7 +42,7 @@
             text-align: center;
             z-index: 1;
             opacity: 0; /* Nasconde inizialmente la didascalia */
-            animation: fadeIn 2s forwards; /* Aggiunge animazione di dissolvenza */
+            animation: fadeIn 2s forwards 0.5s; /* Aggiunge animazione di dissolvenza con leggero ritardo */
         }
         
         /* Definizione dell'animazione fadeIn */
@@ -82,21 +82,17 @@
 
         function changeVideo() {
             currentVideo++;
-            if (currentVideo < videoSources.length) {
-                videoElement.src = videoSources[currentVideo];
-            } else {
+            if (currentVideo >= videoSources.length) {
                 currentVideo = 0;
-                videoElement.src = videoSources[currentVideo];
             }
+            videoElement.src = videoSources[currentVideo];
+            videoElement.load(); // Ricarica il video aggiornato
             videoElement.play();
         }
 
-        videoElement.addEventListener('ended', () => {
-            const nextVideoStartTime = videoElement.duration - 0.5;
-            videoElement.currentTime = nextVideoStartTime;
-            changeVideo();
-        });
+        videoElement.addEventListener('ended', changeVideo);
 
+        // Imposta il primo video come sorgente iniziale
         videoElement.src = videoSources[currentVideo];
     </script>
 </body>
