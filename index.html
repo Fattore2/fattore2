@@ -140,8 +140,9 @@
     </style>
 </head>
 <body>
-    <video id="background-video" autoplay muted loop>
+    <video id="background-video" autoplay loop>
         <source src="vid bianco e nero casco.mp4" type="video/mp4">
+        <source src="vid bianco e nero casco.webm" type="video/webm"> <!-- Aggiungi un formato alternativo -->
         Il tuo browser non supporta il video.
     </video>
     
@@ -168,13 +169,13 @@
     </div>
 
     <script>
+        const videoElement = document.getElementById('background-video');
         const videoSources = [
             'vid bianco e nero casco.mp4',
             'vid bianco e nero scarpe.mp4',
             'video bianco e nero corda.mp4',
             'video bianco e nero rinvii.mp4'
         ];
-        const videoElement = document.getElementById('background-video');
         let currentVideo = 0;
 
         function changeVideo() {
@@ -189,12 +190,8 @@
         }
 
         videoElement.addEventListener('ended', () => {
-            const nextVideoStartTime = videoElement.duration - 0.5;
-            videoElement.currentTime = nextVideoStartTime;
             changeVideo();
         });
-
-        videoElement.src = videoSources[currentVideo];
 
         function toggleMenu() {
             const menuList = document.getElementById('menuList');
