@@ -72,7 +72,6 @@
                 transform: scale(1);
             }
         }
-        /* Stili per il menu */
         .menu {
             position: absolute;
             top: 20px;
@@ -152,7 +151,7 @@
             <div class="bar"></div>
             <div class="bar"></div>
         </button>
-        <ul class="menu-list" id="menuList">
+        <ul class="menu-list" id="menuList" style="display: none;">
             <li><a href="gruppo.html">Il Gruppo</a></li>
             <li><a href="lapalestra.html">La Palestra</a></li>
             <li><a href="idea.html">La Nostra Idea</a></li>
@@ -172,22 +171,15 @@
 
         function changeVideo() {
             currentVideo++;
-            if (currentVideo < videoSources.length) {
-                videoElement.src = videoSources[currentVideo];
-            } else {
+            if (currentVideo >= videoSources.length) {
                 currentVideo = 0;
-                videoElement.src = videoSources[currentVideo];
             }
+            videoElement.src = videoSources[currentVideo];
+            videoElement.load(); // Ricarica il video aggiornato
             videoElement.play();
         }
 
-        videoElement.addEventListener('ended', () => {
-            const nextVideoStartTime = videoElement.duration - 0.5;
-            videoElement.currentTime = nextVideoStartTime;
-            changeVideo();
-        });
-
-        videoElement.src = videoSources[currentVideo];
+        videoElement.addEventListener('ended', changeVideo);
 
         function toggleMenu() {
             const menuList = document.getElementById('menuList');
