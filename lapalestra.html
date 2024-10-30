@@ -41,6 +41,20 @@
             color: white;
             text-align: center;
             z-index: 1;
+            opacity: 0; /* Nasconde inizialmente la didascalia */
+            animation: fadeIn 2s forwards; /* Aggiunge animazione di dissolvenza */
+        }
+        
+        /* Definizione dell'animazione fadeIn */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -55%); /* Partenza leggermente sopra */
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%); /* Fine centrata */
+            }
         }
     </style>
 </head>
