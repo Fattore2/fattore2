@@ -1,0 +1,101 @@
+ciao<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Palestra</title>
+    <style>
+        @font-face {
+            font-family: 'TradeWinds';
+            src: url('TradeWinds-Regular.ttf') format('truetype');
+        }
+        body {
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
+        }
+        video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            opacity: 1;
+            transition: opacity 0.5s;
+        }
+        .caption {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 87, 51, 0.5); /* Sfondo arancione con 50% trasparenza */
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'TradeWinds', cursive;
+            font-size: 2rem;
+            color: white;
+            text-align: center;
+            z-index: 1;
+            opacity: 0; /* Nasconde inizialmente la didascalia */
+            animation: fadeIn 2s forwards; /* Aggiunge animazione di dissolvenza */
+        }
+        
+        /* Definizione dell'animazione fadeIn */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -55%); /* Partenza leggermente sopra */
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%); /* Fine centrata */
+            }
+        }
+    </style>
+</head>
+<body>
+    <video id="background-video" autoplay muted>
+        <source src="vid bianco e nero casco.mp4" type="video/mp4">
+        Il tuo browser non supporta il video.
+    </video>
+    
+    <div class="caption">
+        La palestra in cui si svolgeranno gli allenamenti è situata nella frazione di Cipolleto di Gubbio, a soli 4 km dal centro storico.
+    </div>
+
+    <script>
+        const videoSources = [
+            'vid bianco e nero casco.mp4',
+            'vid bianco e nero scarpe.mp4',
+            'video bianco e nero corda.mp4',
+            'video bianco e nero rinvii.mp4'
+        ];
+        const videoElement = document.getElementById('background-video');
+        let currentVideo = 0;
+
+        function changeVideo() {
+            currentVideo++;
+            if (currentVideo < videoSources.length) {
+                videoElement.src = videoSources[currentVideo];
+            } else {
+                currentVideo = 0;
+                videoElement.src = videoSources[currentVideo];
+            }
+            videoElement.play();
+        }
+
+        videoElement.addEventListener('ended', () => {
+            const nextVideoStartTime = videoElement.duration - 0.5;
+            videoElement.currentTime = nextVideoStartTime;
+            changeVideo();
+        });
+
+        videoElement.src = videoSources[currentVideo];
+    </script>
+</body>
+</html>
