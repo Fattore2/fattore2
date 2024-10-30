@@ -33,7 +33,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: rgba(255, 87, 51, 0.5); /* Sfondo arancione con 50% trasparenza */
+            background-color: rgba(255, 87, 51, 0.5);
             padding: 20px;
             border-radius: 10px;
             font-family: 'TradeWinds', cursive;
@@ -41,20 +41,68 @@
             color: white;
             text-align: center;
             z-index: 1;
-            opacity: 0; /* Nasconde inizialmente la didascalia */
-            animation: fadeIn 2s forwards; /* Aggiunge animazione di dissolvenza */
+            opacity: 0;
+            animation: fadeIn 2s forwards;
         }
-        
-        /* Definizione dell'animazione fadeIn */
+        /* Animazione didascalia */
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translate(-50%, -55%); /* Partenza leggermente sopra */
+                transform: translate(-50%, -55%);
             }
             to {
                 opacity: 1;
-                transform: translate(-50%, -50%); /* Fine centrata */
+                transform: translate(-50%, -50%);
             }
+        }
+        /* Stili per il menu */
+        .menu {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1;
+        }
+        .menu-button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .bar {
+            width: 30px;
+            height: 4px;
+            background-color: #FF5733;
+            margin: 4px 0;
+            transition: transform 0.3s;
+        }
+        .menu-list {
+            display: none;
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            font-family: 'TradeWinds', cursive;
+            font-size: 1.5rem;
+            color: #FF5733;
+            text-align: center;
+        }
+        .menu-list li {
+            padding: 10px;
+            cursor: pointer;
+            color: #FF5733;
+            transition: background-color 0.3s;
+        }
+        .menu-list li:hover {
+            background-color: rgba(255, 87, 51, 0.2);
+        }
+        .menu-list a {
+            text-decoration: none;
+            color: inherit;
         }
     </style>
 </head>
@@ -66,6 +114,22 @@
     
     <div class="caption">
         La palestra in cui si svolgeranno gli allenamenti è situata nella frazione di Cipolleto di Gubbio, a soli 4 km dal centro storico.
+    </div>
+
+    <!-- Menu di navigazione -->
+    <div class="menu">
+        <button class="menu-button" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </button>
+        <ul class="menu-list" id="menuList">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="gruppo.html">Il Gruppo</a></li>
+            <li><a href="lapalestra.html">La Palestra</a></li>
+            <li><a href="idea.html">La Nostra Idea</a></li>
+            <li><a href="tariffe.html">Tariffe e Informazioni Utili</a></li>
+        </ul>
     </div>
 
     <script>
@@ -96,6 +160,21 @@
         });
 
         videoElement.src = videoSources[currentVideo];
+
+        function toggleMenu() {
+            const menuList = document.getElementById('menuList');
+            if (menuList.style.display === 'none' || menuList.style.display === '') {
+                menuList.style.display = 'block';
+                setTimeout(() => {
+                    menuList.style.opacity = '1';
+                }, 10);
+            } else {
+                menuList.style.opacity = '0';
+                setTimeout(() => {
+                    menuList.style.display = 'none';
+                }, 500);
+            }
+        }
     </script>
 </body>
 </html>
