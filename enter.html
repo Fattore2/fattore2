@@ -4,33 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benvenuto in Fattore 2</title>
-    <link rel="stylesheet" href="stile.css"> <!-- Collegamento allo stesso CSS, se vuoi mantenere lo stile -->
+    <link rel="stylesheet" href="stile.css">
     <style>
-        /* Stile aggiuntivo per la nuova pagina */
+        /* Stile di base */
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f5f5f5;
             margin: 0;
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            opacity: 1;
+            transition: opacity 0.5s;
+        }
+        .menu {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             text-align: center;
+            z-index: 1;
+            background-color: rgba(255, 255, 255, 0.8); /* Sfondo semi-trasparente per il menù */
+            padding: 20px;
+            border-radius: 10px;
         }
-        h1 {
-            color: #333;
-        }
-        p {
-            color: #666;
-            font-size: 1.2rem;
+        .menu a {
+            display: block;
+            margin: 10px 0;
+            font-size: 1.5rem;
+            color: #FF5733;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <div class="content">
+    <video id="background-video" autoplay muted>
+        <source src="vid bianco e nero casco.mp4" type="video/mp4">
+        Il tuo browser non supporta il video.
+    </video>
+    
+    <div class="menu">
         <h1>Benvenuto in Fattore 2</h1>
-        <p>Qui troverai la tua nuova esperienza personalizzata.</p>
-        <!-- Altri contenuti che vorrai aggiungere in futuro -->
+        <a href="#">La Palestra</a>
+        <a href="#">Il Gruppo</a>
+        <a href="#">La Nostra Idea</a>
+        <a href="#">Tariffe e Informazioni Utili</a>
     </div>
+
+    <script>
+        const videoSources = [
+            'vid bianco e nero casco.mp4',
+            'vid bianco e nero scarpe.mp4',
+            'video bianco e nero corda.mp4',
+            'video bianco e nero rinvii.mp4'
+        ];
+        const videoElement = document.getElementById('background-video');
+        let currentVideo = 0;
+
+        function changeVideo() {
+            currentVideo++;
+            if (currentVideo >= videoSources.length) {
+                currentVideo = 0;
+            }
+            videoElement.src = videoSources[currentVideo];
+            videoElement.load(); // Ricarica il video aggiornato
+            videoElement.play();
+        }
+
+        videoElement.addEventListener('ended', changeVideo);
+    </script>
 </body>
 </html>
