@@ -13,40 +13,37 @@
 
         body {
             margin: 0;
-            overflow: hidden;
+            overflow: auto; /* Permette lo scorrimento */
             position: relative;
-            height: 100vh;
             font-family: Arial, sans-serif; /* Font di default */
             color: #ffffff; /* Colore del testo */
+            min-height: 100vh; /* Minima altezza per coprire tutta la finestra */
+            background: #000; /* Sfondo di base */
         }
 
         video {
             position: absolute;
             top: 50%;
             left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
+            min-width: 100%; /* Larghezza minima per il video */
+            min-height: 100%; /* Altezza minima per il video */
+            width: auto; /* Larghezza automatica */
+            height: auto; /* Altezza automatica */
             transform: translate(-50%, -50%);
             z-index: -1; /* Posiziona il video dietro il contenuto */
-            opacity: 0.8; /* Rendi il video leggermente trasparente */
-            transition: opacity 0.5s;
+            opacity: 0.5; /* Rendi il video leggermente trasparente */
         }
 
         .content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            position: relative; /* Modifica per posizionare correttamente il contenuto */
             text-align: center;
-            z-index: 1;
+            z-index: 1; /* Posiziona sopra il video */
             background-color: rgba(0, 0, 0, 0.7); /* Sfondo nero semi-trasparente */
             padding: 30px;
             border-radius: 10px; /* Bordo arrotondato */
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Ombra per profondità */
             max-width: 800px; /* Larghezza massima per il contenuto */
-            margin: 0 auto; /* Centra il contenuto */
+            margin: 50px auto; /* Margine per centratura e spazio sopra e sotto */
         }
 
         h1 {
@@ -97,7 +94,7 @@
 </head>
 <body>
 
-    <video id="background-video" autoplay muted>
+    <video id="background-video" autoplay muted loop>
         <source src="vid bianco e nero casco.mp4" type="video/mp4">
         <source src="vid bianco e nero scarpe.mp4" type="video/mp4">
         <source src="video bianco e nero corda.mp4" type="video/mp4">
