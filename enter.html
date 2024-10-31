@@ -3,20 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enter the Experience</title>
+    <title>Enter</title>
     <link rel="stylesheet" href="stile.css">
     <style>
         @font-face {
             font-family: 'TradeWinds';
             src: url('TradeWinds-Regular.ttf') format('truetype');
         }
+
         body {
             margin: 0;
             overflow: hidden;
-            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 100vh;
-            font-family: Arial, sans-serif; /* Font di default */
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: #ffffff;
         }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            font-size: 2rem; /* Aumenta la dimensione del testo */
+            color: #ff007f; /* Colore rosa acceso */
+            background-color: rgba(0, 0, 0, 0.7); /* Sfondo nero trasparente per contrasto */
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            max-width: 600px; /* Limita la larghezza */
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #ff007f;
+            margin: 10px 0;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .menu a:hover {
+            color: #ffffff; /* Cambia colore al passaggio del mouse */
+            transform: scale(1.1); /* Leggero ingrandimento al passaggio del mouse */
+        }
+
         video {
             position: absolute;
             top: 50%;
@@ -27,101 +58,23 @@
             height: auto;
             transform: translate(-50%, -50%);
             z-index: -1;
-            opacity: 1;
-            transition: opacity 0.5s;
-        }
-        .content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            z-index: 1;
-            color: white; /* Colore del testo */
-        }
-        .arrow {
-            position: absolute;
-            top: 20px; /* Posizionamento verticale */
-            left: 20px; /* Posizionamento orizzontale */
-            font-size: 3rem; /* Dimensione della freccia */
-            color: #FF5733; /* Colore della freccia */
-            text-decoration: none; /* Rimuove la sottolineatura */
-            transition: transform 0.3s;
-        }
-        .arrow:hover {
-            transform: scale(1.2); /* Effetto hover per ingrandire la freccia */
-        }
-        .menu {
-            position: absolute;
-            top: 80px; /* Posizionamento del menu */
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1;
-            background-color: rgba(255, 255, 255, 0.8); /* Sfondo semi-trasparente */
-            border-radius: 8px; /* Bordo arrotondato */
-            padding: 10px 20px; /* Padding */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombra */
-            display: flex; /* Flexbox per disporre le voci in riga */
-            justify-content: center; /* Centratura orizzontale */
-            gap: 15px; /* Spaziatura tra le voci */
-        }
-        .menu a {
-            padding: 10px 15px; /* Padding delle voci del menu */
-            text-decoration: none; /* Rimuove la sottolineatura */
-            color: #FF5733; /* Colore del testo */
-            font-weight: bold; /* Testo in grassetto */
-            border: 2px solid #FF5733; /* Bordo delle voci */
-            border-radius: 5px; /* Bordo arrotondato */
-            transition: background-color 0.3s, color 0.3s; /* Transizione per gli effetti hover */
-        }
-        .menu a:hover {
-            background-color: #FF5733; /* Colore di sfondo al passaggio del mouse */
-            color: white; /* Colore del testo al passaggio del mouse */
+            opacity: 0.5;
         }
     </style>
 </head>
 <body>
-    <video id="background-video" autoplay muted>
+    <video autoplay muted loop>
         <source src="vid bianco e nero casco.mp4" type="video/mp4">
+        <source src="vid bianco e nero scarpe.mp4" type="video/mp4">
+        <source src="video bianco e nero corda.mp4" type="video/mp4">
+        <source src="video bianco e nero rinvii.mp4" type="video/mp4">
         Il tuo browser non supporta il video.
     </video>
 
-    <div class="content">
-        <h2>Benvenuto!</h2> <!-- Aggiungi eventuali contenuti desiderati -->
-    </div>
-
-    <!-- Freccia per tornare alla pagina principale -->
-    <a class="arrow" href="index.html">&#8592;</a> <!-- Freccia a sinistra -->
-
-    <!-- Menu -->
     <div class="menu">
-        <a href="#palestra">La Palestra</a>
-        <a href="#gruppo">Il Gruppo</a>
-        <a href="#idea">La Nostra Idea</a>
-        <a href="tariffeeinformazioniutili.html">Tariffe e Informazioni Utili</a> <!-- Collegamento alla nuova pagina -->
+        <a href="tariffeeinformazioniutili.html">Tariffe e Informazioni Utili</a>
+        <a href="pagina2.html">Pagina 2</a>
+        <a href="pagina3.html">Pagina 3</a>
     </div>
-
-    <script>
-        const videoSources = [
-            'vid bianco e nero casco.mp4',
-            'vid bianco e nero scarpe.mp4',
-            'video bianco e nero corda.mp4',
-            'video bianco e nero rinvii.mp4'
-        ];
-        const videoElement = document.getElementById('background-video');
-        let currentVideo = 0;
-
-        function changeVideo() {
-            currentVideo++;
-            if (currentVideo >= videoSources.length) {
-                currentVideo = 0;
-            }
-            videoElement.src = videoSources[currentVideo];
-            videoElement.load();
-            videoElement.play();
-        }
-
-        videoElement.addEventListener('ended', changeVideo);
-    </script>
 </body>
 </html>
