@@ -3,51 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enter</title>
+    <title>Enter Page</title>
     <link rel="stylesheet" href="stile.css">
     <style>
         @font-face {
             font-family: 'TradeWinds';
             src: url('TradeWinds-Regular.ttf') format('truetype');
         }
-
         body {
             margin: 0;
             overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            position: relative;
             height: 100vh;
-            font-family: Arial, sans-serif;
-            background: #000;
-            color: #ffffff;
         }
 
-        .menu {
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-            font-size: 2rem;
-            color: #ff007f;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            max-width: 600px;
-        }
-
-        .menu a {
-            text-decoration: none;
-            color: #ff007f;
-            margin: 10px 0;
-            transition: color 0.3s, transform 0.3s;
-        }
-
-        .menu a:hover {
-            color: #ffffff;
-            transform: scale(1.1);
-        }
-
+        /* Effetto video di sfondo */
         video {
             position: absolute;
             top: 50%;
@@ -58,43 +28,92 @@
             height: auto;
             transform: translate(-50%, -50%);
             z-index: -1;
-            opacity: 0.5;
+            opacity: 1;
+            transition: opacity 0.5s;
         }
 
-        /* Stile per la freccia */
-        .back-arrow {
+        /* Sovrapposizione per effetto "snow crash" */
+        .snowcrash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('snow-noise.gif') repeat;
+            opacity: 0;
+            z-index: 10;
+            animation: snowcrash 1.5s forwards;
+        }
+
+        @keyframes snowcrash {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* Contenuto della pagina */
+        .content {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 2rem;
-            color: #ff007f;
-            text-decoration: none;
-            transition: color 0.3s, transform 0.3s;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1;
         }
 
-        .back-arrow:hover {
+        .menu {
+            font-family: 'TradeWinds', cursive;
+            font-size: 2.5rem;
+            color: #FF007F;
+            text-decoration: none;
+            animation: fadeInCenter 1s forwards;
+            animation-delay: 1.5s;
+        }
+
+        /* Animazione di ingresso per i menu */
+        @keyframes fadeInCenter {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        /* Stile per il menu */
+        .menu-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Link menu con animazione */
+        .menu a {
+            color: #FF007F;
+            text-decoration: none;
+            margin: 10px 0;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .menu a:hover {
             color: #ffffff;
             transform: scale(1.1);
         }
+
     </style>
 </head>
 <body>
-    <!-- Freccia che riporta alla pagina iniziale -->
-    <a href="index.html" class="back-arrow">&#8592;</a> <!-- Simbolo della freccia -->
+    <!-- Sovrapposizione "snow crash" -->
+    <div class="snowcrash"></div>
 
-    <video autoplay muted loop>
+    <video id="background-video" autoplay muted>
         <source src="vid bianco e nero casco.mp4" type="video/mp4">
-        <source src="vid bianco e nero scarpe.mp4" type="video/mp4">
-        <source src="video bianco e nero corda.mp4" type="video/mp4">
-        <source src="video bianco e nero rinvii.mp4" type="video/mp4">
         Il tuo browser non supporta il video.
     </video>
 
-    <div class="menu">
-        <a href="lapalestra.html">La Palestra</a>
-        <a href="ilgruppo.html">Il Gruppo</a>
-        <a href="lanostraidea.html">La Nostra Idea</a>
-        <a href="tariffeeinformazioniutili.html">Tariffe e Informazioni Utili</a>
+    <div class="content">
+        <div class="menu-container">
+            <div class="menu"><a href="lapalestra.html">La Palestra</a></div>
+            <div class="menu"><a href="ilgruppo.html">Il Gruppo</a></div>
+            <div class="menu"><a href="nostraidea.html">La Nostra Idea</a></div>
+            <div class="menu"><a href="tariffeeinformazioniutili.html">Tariffe e Informazioni Utili</a></div>
+        </div>
     </div>
 </body>
 </html>
