@@ -49,6 +49,23 @@
         .arrow:hover {
             transform: scale(1.2); /* Effetto hover per ingrandire la freccia */
         }
+        .menu {
+            position: absolute;
+            top: 80px; /* Posizionamento del menu */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            background-color: rgba(255, 255, 255, 0.8); /* Sfondo semi-trasparente */
+            border-radius: 8px; /* Bordo arrotondato */
+            padding: 10px 20px; /* Padding */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombra */
+        }
+        .menu a {
+            margin: 0 15px; /* Margine tra le voci del menu */
+            text-decoration: none; /* Rimuove la sottolineatura */
+            color: #FF5733; /* Colore del testo */
+            font-weight: bold; /* Testo in grassetto */
+        }
     </style>
 </head>
 <body>
@@ -62,7 +79,15 @@
     </div>
 
     <!-- Freccia per tornare alla pagina principale -->
-    <a class="arrow" href="index.html">&#8592;</a> <!-- Utilizza il codice HTML per una freccia -->
+    <a class="arrow" href="index.html">&#8592;</a> <!-- Freccia a sinistra -->
+
+    <!-- Menu -->
+    <div class="menu">
+        <a href="#palestra">La Palestra</a>
+        <a href="#gruppo">Il Gruppo</a>
+        <a href="#idea">La Nostra Idea</a>
+        <a href="#tariffe">Tariffe e Informazioni Utili</a>
+    </div>
 
     <script>
         const videoSources = [
