@@ -15,6 +15,7 @@
             overflow: hidden;
             position: relative;
             height: 100vh;
+            font-family: Arial, sans-serif; /* Font di default */
         }
         video {
             position: absolute;
@@ -36,6 +37,7 @@
             transform: translate(-50%, -50%);
             text-align: center;
             z-index: 1;
+            color: white; /* Colore del testo */
         }
         .arrow {
             position: absolute;
@@ -59,12 +61,22 @@
             border-radius: 8px; /* Bordo arrotondato */
             padding: 10px 20px; /* Padding */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombra */
+            display: flex; /* Flexbox per disporre le voci in riga */
+            justify-content: center; /* Centratura orizzontale */
+            gap: 15px; /* Spaziatura tra le voci */
         }
         .menu a {
-            margin: 0 15px; /* Margine tra le voci del menu */
+            padding: 10px 15px; /* Padding delle voci del menu */
             text-decoration: none; /* Rimuove la sottolineatura */
             color: #FF5733; /* Colore del testo */
             font-weight: bold; /* Testo in grassetto */
+            border: 2px solid #FF5733; /* Bordo delle voci */
+            border-radius: 5px; /* Bordo arrotondato */
+            transition: background-color 0.3s, color 0.3s; /* Transizione per gli effetti hover */
+        }
+        .menu a:hover {
+            background-color: #FF5733; /* Colore di sfondo al passaggio del mouse */
+            color: white; /* Colore del testo al passaggio del mouse */
         }
     </style>
 </head>
@@ -86,7 +98,7 @@
         <a href="#palestra">La Palestra</a>
         <a href="#gruppo">Il Gruppo</a>
         <a href="#idea">La Nostra Idea</a>
-        <a href="#tariffe">Tariffe e Informazioni Utili</a>
+        <a href="tariffeeinformazioniutili.html">Tariffe e Informazioni Utili</a> <!-- Collegamento alla nuova pagina -->
     </div>
 
     <script>
