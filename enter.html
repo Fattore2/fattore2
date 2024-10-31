@@ -30,7 +30,7 @@
             width: auto;
             height: auto;
             transform: translate(-50%, -50%);
-            z-index: -1;
+            z-index: -2;
             opacity: 1;
         }
 
@@ -44,6 +44,7 @@
             z-index: 10;
             opacity: 1;
             animation: fadeOutNoise 1.5s forwards;
+            pointer-events: none;
         }
 
         /* Dissolvenza per il video statico */
@@ -135,7 +136,7 @@
     </a>
 
     <!-- Video di static noise per l'entrata -->
-    <video id="static-noise" autoplay muted playsinline>
+    <video id="static-noise" autoplay muted playsinline onended="this.style.display='none'">
         <source src="static-noise.mp4" type="video/mp4">
         Il tuo browser non supporta il video.
     </video>
