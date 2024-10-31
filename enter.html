@@ -27,13 +27,13 @@
             display: flex;
             flex-direction: column;
             text-align: center;
-            font-size: 2rem; /* Aumenta la dimensione del testo */
-            color: #ff007f; /* Colore rosa acceso */
-            background-color: rgba(0, 0, 0, 0.7); /* Sfondo nero trasparente per contrasto */
+            font-size: 2rem;
+            color: #ff007f;
+            background-color: rgba(0, 0, 0, 0.7);
             padding: 20px 40px;
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            max-width: 600px; /* Limita la larghezza */
+            max-width: 600px;
         }
 
         .menu a {
@@ -44,8 +44,8 @@
         }
 
         .menu a:hover {
-            color: #ffffff; /* Cambia colore al passaggio del mouse */
-            transform: scale(1.1); /* Leggero ingrandimento al passaggio del mouse */
+            color: #ffffff;
+            transform: scale(1.1);
         }
 
         video {
@@ -60,9 +60,28 @@
             z-index: -1;
             opacity: 0.5;
         }
+
+        /* Stile per la freccia */
+        .back-arrow {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2rem;
+            color: #ff007f;
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .back-arrow:hover {
+            color: #ffffff;
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
+    <!-- Freccia che riporta alla pagina iniziale -->
+    <a href="index.html" class="back-arrow">&#8592;</a> <!-- Simbolo della freccia -->
+
     <video autoplay muted loop>
         <source src="vid bianco e nero casco.mp4" type="video/mp4">
         <source src="vid bianco e nero scarpe.mp4" type="video/mp4">
@@ -72,9 +91,10 @@
     </video>
 
     <div class="menu">
+        <a href="lapalestra.html">La Palestra</a>
+        <a href="ilgruppo.html">Il Gruppo</a>
+        <a href="lanostraidea.html">La Nostra Idea</a>
         <a href="tariffeeinformazioniutili.html">Tariffe e Informazioni Utili</a>
-        <a href="pagina2.html">Pagina 2</a>
-        <a href="pagina3.html">Pagina 3</a>
     </div>
 </body>
 </html>
