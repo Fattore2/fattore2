@@ -20,10 +20,11 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 100vw;
-            height: 100vh;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
             transform: translate(-50%, -50%);
-            object-fit: cover;
             z-index: -1;
             opacity: 1;
             transition: opacity 0.5s;
@@ -72,26 +73,11 @@
                 transform: scale(1);
             }
         }
-        
-        /* Media Query specifica per iOS */
-        @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 2) {
-            video {
-                opacity: 0.7;
-            }
-            .image-container {
-                width: 200px;
-                height: 200px;
-            }
-            h2 a {
-                font-size: 2rem;
-            }
-        }
     </style>
 </head>
 <body>
-    <video id="background-video" autoplay muted loop playsinline>
-        <source src="video_unito.mp4" type="video/mp4">
-        <source src="video_unito.webm" type="video/webm">
+    <video id="background-video" autoplay muted>
+        <source src="vid bianco e nero casco.mp4" type="video/mp4">
         Il tuo browser non supporta il video.
     </video>
     
@@ -103,10 +89,26 @@
     </div>
 
     <script>
+        const videoSources = [
+            'vid bianco e nero casco.mp4',
+            'vid bianco e nero scarpe.mp4',
+            'video bianco e nero corda.mp4',
+            'video bianco e nero rinvii.mp4'
+        ];
         const videoElement = document.getElementById('background-video');
-        
-        // Assicurati che il video venga ricaricato correttamente su iOS
-        videoElement.load();
+        let currentVideo = 0;
+
+        function changeVideo() {
+            currentVideo++;
+            if (currentVideo >= videoSources.length) {
+                currentVideo = 0;
+            }
+            videoElement.src = videoSources[currentVideo];
+            videoElement.load(); // Ricarica il video aggiornato
+            videoElement.play();
+        }
+
+        videoElement.addEventListener('ended', changeVideo);
     </script>
 </body>
 </html>
