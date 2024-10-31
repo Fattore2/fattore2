@@ -20,11 +20,10 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
+            width: 100vw;
+            height: 100vh;
             transform: translate(-50%, -50%);
+            object-fit: cover;
             z-index: -1;
             opacity: 1;
             transition: opacity 0.5s;
@@ -76,8 +75,9 @@
     </style>
 </head>
 <body>
-    <video id="background-video" autoplay muted>
+    <video id="background-video" autoplay muted playsinline>
         <source src="vid bianco e nero casco.mp4" type="video/mp4">
+        <source src="vid bianco e nero casco.webm" type="video/webm">
         Il tuo browser non supporta il video.
     </video>
     
@@ -89,26 +89,34 @@
     </div>
 
     <script>
-        const videoSources = [
+        const videoSourcesDesktop = [
             'vid bianco e nero casco.mp4',
             'vid bianco e nero scarpe.mp4',
             'video bianco e nero corda.mp4',
             'video bianco e nero rinvii.mp4'
         ];
+        const videoSourcesMobile = [
+            'mobile_vid_casco.mp4',
+            'mobile_vid_scarpe.mp4',
+            'mobile_vid_corda.mp4',
+            'mobile_vid_rinvii.mp4'
+        ];
+        
         const videoElement = document.getElementById('background-video');
         let currentVideo = 0;
-
+        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        
+        const videoSources = isMobile ? videoSourcesMobile : videoSourcesDesktop;
+        
         function changeVideo() {
-            currentVideo++;
-            if (currentVideo >= videoSources.length) {
-                currentVideo = 0;
-            }
+            currentVideo = (currentVideo + 1) % videoSources.length;
             videoElement.src = videoSources[currentVideo];
-            videoElement.load(); // Ricarica il video aggiornato
+            videoElement.load();
             videoElement.play();
         }
 
         videoElement.addEventListener('ended', changeVideo);
+        videoElement.src = videoSources[currentVideo]; // Imposta il primo video all'avvio
     </script>
 </body>
 </html>
