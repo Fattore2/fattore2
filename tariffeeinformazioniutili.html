@@ -10,12 +10,16 @@
             font-family: 'TradeWinds';
             src: url('TradeWinds-Regular.ttf') format('truetype');
         }
+
         body {
             margin: 0;
             overflow: hidden;
             position: relative;
             height: 100vh;
+            font-family: Arial, sans-serif; /* Font di default */
+            color: #ffffff; /* Colore del testo */
         }
+
         video {
             position: absolute;
             top: 50%;
@@ -26,9 +30,10 @@
             height: auto;
             transform: translate(-50%, -50%);
             z-index: -1; /* Posiziona il video dietro il contenuto */
-            opacity: 1;
+            opacity: 0.8; /* Rendi il video leggermente trasparente */
             transition: opacity 0.5s;
         }
+
         .content {
             position: absolute;
             top: 50%;
@@ -36,34 +41,57 @@
             transform: translate(-50%, -50%);
             text-align: center;
             z-index: 1;
-            color: white; /* Colore del testo */
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.5); /* Sfondo trasparente per leggibilità */
-            border-radius: 8px; /* Bordo arrotondato */
+            background-color: rgba(0, 0, 0, 0.7); /* Sfondo nero semi-trasparente */
+            padding: 30px;
+            border-radius: 10px; /* Bordo arrotondato */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Ombra per profondità */
+            max-width: 800px; /* Larghezza massima per il contenuto */
+            margin: 0 auto; /* Centra il contenuto */
         }
+
         h1 {
             font-family: 'TradeWinds', cursive;
             font-size: 3rem;
+            margin-bottom: 20px; /* Spazio sotto il titolo */
         }
+
         h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
+            margin-top: 20px; /* Spazio sopra il sottotitolo */
         }
+
+        p, ul {
+            font-size: 1.2rem;
+            line-height: 1.5; /* Maggiore distanza tra le righe */
+            margin: 10px 0; /* Spazio verticale per i paragrafi */
+        }
+
         ul {
-            list-style-type: none;
-            padding: 0;
+            list-style-type: none; /* Rimuovi i puntini dalle liste */
+            padding: 0; /* Rimuovi padding */
         }
+
         a {
             display: inline-block;
             margin-top: 20px;
             text-decoration: none;
-            color: #FF5733;
-            background-color: white;
+            color: #FF5733; /* Colore del link */
+            background-color: white; /* Sfondo del pulsante */
             padding: 10px 15px;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s; /* Transizione al passaggio del mouse */
         }
+
         a:hover {
             background-color: #f0f0f0; /* Cambia colore al passaggio del mouse */
+            transform: scale(1.05); /* Leggera ingrandimento al passaggio del mouse */
+        }
+
+        /* Stile per i numeri delle liste */
+        li::before {
+            content: '✓'; /* Aggiunge un segno di spunta prima di ogni voce */
+            margin-right: 5px;
+            color: #FF5733; /* Colore del segno di spunta */
         }
     </style>
 </head>
