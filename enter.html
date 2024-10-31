@@ -17,8 +17,8 @@
             height: 100vh;
         }
 
-        /* Effetto video di sfondo */
-        video {
+        /* Video di sfondo principale */
+        video#background-video {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -29,25 +29,59 @@
             transform: translate(-50%, -50%);
             z-index: -1;
             opacity: 1;
-            transition: opacity 0.5s;
         }
 
-        /* Sovrapposizione per effetto "snow crash" */
-        .snowcrash {
+        /* Video di "snow crash" */
+        video#static-noise {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('snow-noise.gif') repeat;
-            opacity: 0;
             z-index: 10;
-            animation: snowcrash 1.5s forwards;
+            opacity: 1;
+            animation: fadeOutNoise 1.5s forwards;
         }
 
-        @keyframes snowcrash {
+        /* Dissolvenza per il video statico */
+        @keyframes fadeOutNoise {
             0% { opacity: 1; }
             100% { opacity: 0; }
+        }
+
+        /* Freccia per tornare alla pagina principale */
+        .back-arrow {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2rem;
+            color: #FF007F;
+            text-decoration: none;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            font-family: 'TradeWinds', cursive;
+            transition: transform 0.3s;
+        }
+        
+        .back-arrow:hover {
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        /* Icona freccia */
+        .arrow-icon {
+            display: inline-block;
+            margin-right: 5px;
+            border: solid #FF007F;
+            border-width: 0 4px 4px 0;
+            padding: 8px;
+            transform: rotate(135deg);
+            transition: border-color 0.3s;
+        }
+        
+        .back-arrow:hover .arrow-icon {
+            border-color: #ffffff;
         }
 
         /* Contenuto della pagina */
@@ -60,34 +94,27 @@
             z-index: 1;
         }
 
-        .menu {
+        .menu-container {
             font-family: 'TradeWinds', cursive;
             font-size: 2.5rem;
             color: #FF007F;
-            text-decoration: none;
             animation: fadeInCenter 1s forwards;
             animation-delay: 1.5s;
         }
 
-        /* Animazione di ingresso per i menu */
+        /* Animazione di ingresso per il menu */
         @keyframes fadeInCenter {
             0% { opacity: 0; transform: scale(0.8); }
             100% { opacity: 1; transform: scale(1); }
         }
-        
-        /* Stile per il menu */
-        .menu-container {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
 
-        /* Link menu con animazione */
+        /* Stile per il menu */
         .menu a {
             color: #FF007F;
             text-decoration: none;
             margin: 10px 0;
+            display: block;
+            font-size: 1.8rem;
             transition: transform 0.3s, color 0.3s;
         }
 
@@ -99,21 +126,56 @@
     </style>
 </head>
 <body>
-    <!-- Sovrapposizione "snow crash" -->
-    <div class="snowcrash"></div>
+    <!-- Freccia per tornare alla pagina principale -->
+    <a href="index.html" class="back-arrow">
+        <span class="arrow-icon"></span> Torna alla Home
+    </a>
 
-    <video id="background-video" autoplay muted>
+    <!-- Video di static noise per l'entrata -->
+    <video id="static-noise" autoplay muted playsinline>
+        <source src="static-noise.mp4" type="video/mp4">
+        Il tuo browser non supporta il video.
+    </video>
+
+    <!-- Video di sfondo principale -->
+    <video id="background-video" autoplay muted loop>
         <source src="vid bianco e nero casco.mp4" type="video/mp4">
         Il tuo browser non supporta il video.
     </video>
 
+    <!-- Contenuto centrale della pagina -->
     <div class="content">
         <div class="menu-container">
-            <div class="menu"><a href="lapalestra.html">La Palestra</a></div>
-            <div class="menu"><a href="ilgruppo.html">Il Gruppo</a></div>
-            <div class="menu"><a href="nostraidea.html">La Nostra Idea</a></div>
-            <div class="menu"><a href="tariffeeinformazioniutili.html">Tariffe e Informazioni Utili</a></div>
+            <!-- Menu con collegamenti alle varie pagine -->
+            <nav class="menu">
+                <a href="lapalestra.html">La Palestra</a>
+                <a href="ilgruppo.html">Il Gruppo</a>
+                <a href="lanostraidea.html">La Nostra Idea</a>
+            </nav>
         </div>
     </div>
+
+    <script>
+        const videoSources = [
+            'vid bianco e nero casco.mp4',
+            'vid bianco e nero scarpe.mp4',
+            'video bianco e nero corda.mp4',
+            'video bianco e nero rinvii.mp4'
+        ];
+        const videoElement = document.getElementById('background-video');
+        let currentVideo = 0;
+
+        function changeVideo() {
+            currentVideo++;
+            if (currentVideo >= videoSources.length) {
+                currentVideo = 0;
+            }
+            videoElement.src = videoSources[currentVideo];
+            videoElement.load(); 
+            videoElement.play();
+        }
+
+        videoElement.addEventListener('ended', changeVideo);
+    </script>
 </body>
 </html>
