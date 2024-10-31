@@ -10,90 +10,63 @@
             font-family: 'TradeWinds';
             src: url('TradeWinds-Regular.ttf') format('truetype');
         }
-
         body {
             margin: 0;
-            overflow: auto; /* Permette lo scorrimento */
+            overflow: auto;
             position: relative;
-            font-family: Arial, sans-serif; /* Font di default */
-            color: #ffffff; /* Colore del testo */
-            min-height: 100vh; /* Minima altezza per coprire tutta la finestra */
-            background: #000; /* Sfondo di base */
+            height: auto;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
         }
-
         video {
             position: absolute;
             top: 50%;
             left: 50%;
-            min-width: 100%; /* Larghezza minima per il video */
-            min-height: 100%; /* Altezza minima per il video */
-            width: auto; /* Larghezza automatica */
-            height: auto; /* Altezza automatica */
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
             transform: translate(-50%, -50%);
-            z-index: -1; /* Posiziona il video dietro il contenuto */
-            opacity: 0.5; /* Rendi il video leggermente trasparente */
+            z-index: -1;
+            opacity: 0.5;
+            transition: opacity 0.5s;
         }
-
         .content {
-            position: relative; /* Modifica per posizionare correttamente il contenuto */
+            position: relative;
+            padding: 20px;
+            z-index: 1;
             text-align: center;
-            z-index: 1; /* Posiziona sopra il video */
-            background-color: rgba(0, 0, 0, 0.7); /* Sfondo nero semi-trasparente */
-            padding: 30px;
-            border-radius: 10px; /* Bordo arrotondato */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Ombra per profondità */
-            max-width: 800px; /* Larghezza massima per il contenuto */
-            margin: 50px auto; /* Margine per centratura e spazio sopra e sotto */
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
         }
-
         h1 {
             font-family: 'TradeWinds', cursive;
             font-size: 3rem;
-            margin-bottom: 20px; /* Spazio sotto il titolo */
+            color: #FF5733;
+            margin-bottom: 20px;
         }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-top: 20px; /* Spazio sopra il sottotitolo */
-        }
-
-        p, ul {
-            font-size: 1.2rem;
-            line-height: 1.5; /* Maggiore distanza tra le righe */
-            margin: 10px 0; /* Spazio verticale per i paragrafi */
-        }
-
-        ul {
-            list-style-type: none; /* Rimuovi i puntini dalle liste */
-            padding: 0; /* Rimuovi padding */
-        }
-
-        a {
-            display: inline-block;
+        h2, h3 {
+            color: #FF5733;
             margin-top: 20px;
-            text-decoration: none;
-            color: #FF5733; /* Colore del link */
-            background-color: white; /* Sfondo del pulsante */
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.3s; /* Transizione al passaggio del mouse */
         }
-
-        a:hover {
-            background-color: #f0f0f0; /* Cambia colore al passaggio del mouse */
-            transform: scale(1.05); /* Leggera ingrandimento al passaggio del mouse */
+        p {
+            line-height: 1.6;
+            margin: 10px 0;
         }
-
-        /* Stile per i numeri delle liste */
-        li::before {
-            content: '✓'; /* Aggiunge un segno di spunta prima di ogni voce */
-            margin-right: 5px;
-            color: #FF5733; /* Colore del segno di spunta */
+        ul {
+            text-align: left;
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
         }
     </style>
 </head>
 <body>
-
     <video id="background-video" autoplay muted loop>
         <source src="vid bianco e nero casco.mp4" type="video/mp4">
         <source src="vid bianco e nero scarpe.mp4" type="video/mp4">
@@ -103,70 +76,108 @@
     </video>
 
     <div class="content">
-        <h1>Linee Guida Palestra Fattore 2</h1>
-
+        <h1>Linee Guida Palestra C.A.I. - Fattore 2</h1>
         <h2>Info generali</h2>
-        <p>
-            La Palestra di Arrampicata C.A.I.- Fattore 2 è una struttura gestita da volontari del C.A.I. (Club Alpino Italiano) della sezione di Gubbio.
-        </p>
-        <p>I responsabili designati nella gestione della palestra negli orari di apertura sono:</p>
+        <p>La Palestra di Arrampicata C.A.I. - Fattore 2 è una struttura gestita da volontari del C.A.I. (Club Alpino Italiano) della sezione di Gubbio. I responsabili designati nella gestione della palestra negli orari di apertura sono:</p>
         <ul>
-            <li>Andrea Marcheggiani - 389 42 13 597</li>
-            <li>Giuseppe Nardelli - 333 10 38 972</li>
-            <li>Lorenzo Rossi - 366 40 64 190</li>
-            <li>Marco Sbianchi - 328 96 13 368</li>
-            <li>Michele Menichetti - 324 54 34 032</li>
+            <li>Andrea Marcheggiani - 389 421 3597</li>
+            <li>Giuseppe Nardelli - 333 103 8972</li>
+            <li>Lorenzo Rossi - 366 406 4190</li>
+            <li>Marco Sbianchi - 328 961 3368</li>
+            <li>Michele Menichetti - 324 543 4032</li>
         </ul>
 
         <h2>Orari di Apertura</h2>
         <p>La Palestra è aperta nei giorni:</p>
-        <ul>
+        <ol>
             <li>Martedì, dalle 20:30 alle 23:00</li>
             <li>Giovedì, dalle 20:30 alle 23:00</li>
             <li>Venerdì, dalle 20:00 alle 23:30</li>
-        </ul>
+        </ol>
 
-        <h2>Tariffe e Tessera C.A.I. e dettagli generali</h2>
-        <h3>Tipologia di associazione</h3>
+        <h2>Tari e Tessera C.A.I. e dettagli generali</h2>
+        <h3>Dettagli Costo Rinnovo Ricongiungimento (per ogni anno saltato)</h3>
         <ul>
-            <li>Socio Ordinario: 46 € (Maggiorenne)</li>
-            <li>Socio Familiare: 26 € (Socio Ordinario appartenente al nucleo familiare di un Socio Ordinario)</li>
-            <li>Socio Juniores: 16 € (Maggiorenne Under 25)</li>
-            <li>Socio Giovane: 9 € (Under 18)</li>
-            <li>Secondo Under 18: 5 € (una tantum)</li>
+            <li>Socio Ordinario Over 25: 46€ 11€</li>
+            <li>Socio Familiare Over 25 appartenente al nucleo familiare di un Socio Ordinario: 26€ 5€</li>
+            <li>Socio Juniores Over 18-Under 25: 26€ 11€</li>
+            <li>Socio Giovane Under 18: 17€ 1,6€</li>
+            <li>Secondo Socio Giovane Secondo Under 18 appartenente al nucleo familiare di un Socio: 9€ 1,6€</li>
         </ul>
 
-        <h3>Tipologia di accesso</h3>
+        <h3>Tari della Palestra per Socio Ordinario-Socio Familiare-Socio Juniores</h3>
+        <h4>Tipologia di accesso</h4>
         <ul>
-            <li>Ingresso Giornaliero: 5 €</li>
-            <li>Abbonamento Mensile: 35 € (Valido per tutti gli accessi per 1 mese dal giorno di sottoscrizione)</li>
-            <li>Abbonamento Trimestrale: 80 € (Valido per tutti gli accessi per 3 mesi dal giorno di sottoscrizione)</li>
+            <li>Ingresso Giornaliero: 5€ (Valido per 1 accesso)</li>
+            <li>Abbonamento Mensile: 35€ (Valido per tutti gli accessi per 1 mese dal giorno di sottoscrizione)</li>
+            <li>Abbonamento Trimestrale: 80€ (Valido per tutti gli accessi per 3 mesi dal giorno di sottoscrizione)</li>
         </ul>
 
-        <a href="enter.html">Torna alla pagina principale</a>
+        <h3>Tari della Palestra per Socio Giovane-Secondo Socio Giovane</h3>
+        <h4>Tipologia di accesso</h4>
+        <ul>
+            <li>Ingresso Giornaliero: 3€ (Valido per 1 accesso)</li>
+            <li>Abbonamento Mensile: 20€ (Valido per tutti gli accessi per 1 mese dal giorno di sottoscrizione)</li>
+            <li>Abbonamento Trimestrale: 50€ (Valido per tutti gli accessi per 3 mesi dal giorno di sottoscrizione)</li>
+        </ul>
+
+        <h2>Modalità di accesso</h2>
+        <p>L'accesso è riservato ai soli soci C.A.I. aventi tessera in corso di validità di qualsiasi sezione del C.A.I. La nuova tessera C.A.I. o il rinnovo (Bollino) possono essere richiesti tutti i venerdì dalle 21 alle 22:30 nella sede del C.A.I. di Gubbio (Via Cairoli 1, Gubbio) o in qualsiasi altra sezione del C.A.I. La nuova tessera o il rinnovo saranno attivi a partire dal giorno successivo di emissione e fino al 31 marzo dell'anno successivo a quello indicato sul Bollino.</p>
+
+        <h3>Ricongiungimento (Recupero Bollini negli anni mancanti della Tessera)</h3>
+        <p>Se il socio che intende rinnovare la Tessera C.A.I. ha saltato uno o più anni precedenti a quelli del rinnovo, queste sono le opzioni:</p>
+        <ul>
+            <li>Ricongiungere la carriera associativa mantenendo la vecchia tessera e pagando, per ogni anno saltato: <br>
+                Socio Ordinario - 11 € per ogni anno saltato <br>
+                Socio Familiare - 5 € per ogni anno saltato <br>
+                Socio Giovane - 1,6 € per ogni anno saltato
+            </li>
+            <li>Ri-tesserarsi ex novo pagando: Tari a Tessera C.A.I. (Socio Ordinario- Socio Familiare- Socio Juniores- Socio Giovane- Secondo Socio Giovane) Recupero costi omaggiati precedentemente - 10 €</li>
+        </ul>
+
+        <h3>Prima Prova Gratuita</h3>
+        <p>Il primo ingresso in palestra è GRATUITO, ma comunque è sempre necessario:</p>
+        <ul>
+            <li>Possedere una Tessera CAI in corso di validità;</li>
+            <li>Aver sottoscritto un’assicurazione nelle modalità elencate in seguito alla voce “Non tesserato C.A.I.”.</li>
+        </ul>
+
+        <h2>Accessi e tessere</h2>
+        <p>Esistono casi differenti per accedere alla palestra di arrampicata:</p>
+        <ol>
+            <li>
+                <h4>Tesserato C.A.I. (Socio Ordinario- Socio Familiare- Socio Juniores) con tessera in corso di validità:</h4>
+                <ul>
+                    <li>Può sfruttare la PRIMA PROVA GRATUITA, poi deve procedere al pagamento di ingresso singolo, abbonamento mensile o abbonamento trimestrale secondo le Tariffe.</li>
+                    <li>Presa visione e accettazione firmata del REGOLAMENTO DELLA PALESTRA DI ARRAMPICATA SPORTIVA.</li>
+                </ul>
+            </li>
+            <li>
+                <h4>Tesserato C.A.I. (Socio Giovane- Secondo Socio Giovane) con tessera in corso di validità:</h4>
+                <ul>
+                    <li>Dovrà essere accompagnato da un genitore o da chi ne esercita la patria potestà presso la palestra e, con uno dei responsabili, effettuare il pagamento di ingresso singolo, abbonamento mensile o trimestrale secondo le Tariffe.</li>
+                    <li>Può sfruttare la PRIMA PROVA GRATUITA.</li>
+                    <li>Il genitore o chi ne esercita la patria potestà dovrà visionare, accettare e firmare il REGOLAMENTO DELLA PALESTRA DI ARRAMPICATA SPORTIVA.</li>
+                </ul>
+            </li>
+            <li>
+                <h4>Tesserato C.A.I. (Socio Ordinario- Socio Familiare- Socio Juniores) con tessera NON in corso di validità:</h4>
+                <ul>
+                    <li>Dovrà recarsi nella sede del C.A.I. di Gubbio (Via Cairoli 1, Gubbio) il venerdì, dalle 21 alle 22:30, e procedere al rinnovo della Tessera C.A.I. (aka fare il Bollino) secondo le tariffe di cui sopra.</li>
+                    <li>Può sfruttare la PRIMA PROVA GRATUITA, poi deve procedere al pagamento di ingresso singolo, abbonamento mensile o abbonamento trimestrale secondo le Tariffe.</li>
+                    <li>Presa visione e accettazione firmata del REGOLAMENTO DELLA PALESTRA DI ARRAMPICATA SPORTIVA.</li>
+                </ul>
+            </li>
+            <li>
+                <h4>Tesserato C.A.I. (Socio Giovane- Secondo Socio Giovane) con tessera NON in corso di validità:</h4>
+                <ul>
+                    <li>Dovrà recarsi nella sede del C.A.I. di Gubbio (Via Cairoli 1, Gubbio) il venerdì, dalle 21 alle 22:30, e procedere al rinnovo della Tessera C.A.I. (aka fare il Bollino) secondo le tariffe di cui sopra.</li>
+                    <li>Dovrà essere accompagnato da un genitore o da chi ne esercita la patria potestà presso la palestra e, con uno dei responsabili, effettuare il pagamento di ingresso singolo, abbonamento mensile o trimestrale secondo le Tariffe.</li>
+                    <li>Può sfruttare la PRIMA PROVA GRATUITA.</li>
+                    <li>Il genitore o chi ne esercita la patria potestà dovrà visionare, accettare e firmare il REGOLAMENTO DELLA PALESTRA DI ARRAMPICATA SPORTIVA.</li>
+                </ul>
+            </li>
+        </ol>
     </div>
-
-    <script>
-        const videoSources = [
-            'vid bianco e nero casco.mp4',
-            'vid bianco e nero scarpe.mp4',
-            'video bianco e nero corda.mp4',
-            'video bianco e nero rinvii.mp4'
-        ];
-        const videoElement = document.getElementById('background-video');
-        let currentVideo = 0;
-
-        function changeVideo() {
-            currentVideo++;
-            if (currentVideo >= videoSources.length) {
-                currentVideo = 0;
-            }
-            videoElement.src = videoSources[currentVideo];
-            videoElement.load(); // Ricarica il video aggiornato
-            videoElement.play();
-        }
-
-        videoElement.addEventListener('ended', changeVideo);
-    </script>
 </body>
 </html>
