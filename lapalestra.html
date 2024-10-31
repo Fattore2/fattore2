@@ -4,19 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Palestra</title>
+    <link rel="stylesheet" href="stile.css">
     <style>
-        @font-face {
-            font-family: 'TradeWinds';
-            src: url('TradeWinds-Regular.ttf') format('truetype');
-        }
         body {
             margin: 0;
-            overflow: hidden;
-            position: relative;
-            height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            text-align: center;
         }
+
+        /* Sfondo con video */
         video {
-            position: absolute;
+            position: fixed;
             top: 50%;
             left: 50%;
             min-width: 100%;
@@ -25,156 +30,44 @@
             height: auto;
             transform: translate(-50%, -50%);
             z-index: -1;
-            opacity: 1;
-            transition: opacity 0.5s;
+            opacity: 0.5;
         }
-        .caption {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(255, 87, 51, 0.5);
-            padding: 20px;
-            border-radius: 10px;
-            font-family: 'TradeWinds', cursive;
-            font-size: 2rem;
-            color: white;
-            text-align: center;
-            z-index: 1;
-            opacity: 0;
-            animation: fadeIn 2s forwards;
-        }
-        /* Animazione didascalia */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translate(-50%, -55%);
-            }
-            to {
-                opacity: 1;
-                transform: translate(-50%, -50%);
-            }
-        }
-        /* Stili per il menu */
-        .menu {
+
+        /* Stile per il link di ritorno */
+        .back-link {
             position: absolute;
             top: 20px;
             left: 20px;
-            z-index: 1;
-        }
-        .menu-button {
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .bar {
-            width: 30px;
-            height: 4px;
-            background-color: #FF5733;
-            margin: 4px 0;
-            transition: transform 0.3s;
-        }
-        .menu-list {
-            display: none;
-            list-style: none;
-            padding: 0;
-            margin: 10px 0 0 0;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            font-family: 'TradeWinds', cursive;
             font-size: 1.5rem;
-            color: #FF5733;
-            text-align: center;
-        }
-        .menu-list li {
-            padding: 10px;
-            cursor: pointer;
-            color: #FF5733;
-            transition: background-color 0.3s;
-        }
-        .menu-list li:hover {
-            background-color: rgba(255, 87, 51, 0.2);
-        }
-        .menu-list a {
+            color: #ff007f;
             text-decoration: none;
-            color: inherit;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 5px;
+            transition: color 0.3s, background 0.3s;
+        }
+
+        .back-link:hover {
+            color: #ffffff;
+            background: rgba(255, 0, 127, 0.8);
         }
     </style>
 </head>
 <body>
-    <video id="background-video" autoplay muted>
+    <!-- Sfondo video multiplo -->
+    <video autoplay muted loop>
         <source src="vid bianco e nero casco.mp4" type="video/mp4">
+        <source src="vid bianco e nero scarpe.mp4" type="video/mp4">
+        <source src="video bianco e nero corda.mp4" type="video/mp4">
+        <source src="video bianco e nero rinvii.mp4" type="video/mp4">
         Il tuo browser non supporta il video.
     </video>
-    
-    <div class="caption">
-        La palestra in cui si svolgeranno gli allenamenti è situata nella frazione di Cipolleto di Gubbio, a soli 4 km dal centro storico.
-    </div>
 
-    <!-- Menu di navigazione -->
-    <div class="menu">
-        <button class="menu-button" onclick="toggleMenu()">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </button>
-        <ul class="menu-list" id="menuList">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="gruppo.html">Il Gruppo</a></li>
-            <li><a href="lapalestra.html">La Palestra</a></li>
-            <li><a href="idea.html">La Nostra Idea</a></li>
-            <li><a href="tariffe.html">Tariffe e Informazioni Utili</a></li>
-        </ul>
-    </div>
+    <!-- Link "Torna alla pagina principale" -->
+    <a href="index.html" class="back-link">Torna alla pagina principale</a>
 
-    <script>
-        const videoSources = [
-            'vid bianco e nero casco.mp4',
-            'vid bianco e nero scarpe.mp4',
-            'video bianco e nero corda.mp4',
-            'video bianco e nero rinvii.mp4'
-        ];
-        const videoElement = document.getElementById('background-video');
-        let currentVideo = 0;
-
-        function changeVideo() {
-            currentVideo++;
-            if (currentVideo < videoSources.length) {
-                videoElement.src = videoSources[currentVideo];
-            } else {
-                currentVideo = 0;
-                videoElement.src = videoSources[currentVideo];
-            }
-            videoElement.play();
-        }
-
-        videoElement.addEventListener('ended', () => {
-            const nextVideoStartTime = videoElement.duration - 0.5;
-            videoElement.currentTime = nextVideoStartTime;
-            changeVideo();
-        });
-
-        videoElement.src = videoSources[currentVideo];
-
-        function toggleMenu() {
-            const menuList = document.getElementById('menuList');
-            if (menuList.style.display === 'none' || menuList.style.display === '') {
-                menuList.style.display = 'block';
-                setTimeout(() => {
-                    menuList.style.opacity = '1';
-                }, 10);
-            } else {
-                menuList.style.opacity = '0';
-                setTimeout(() => {
-                    menuList.style.display = 'none';
-                }, 500);
-            }
-        }
-    </script>
+    <!-- Contenuto della pagina -->
+    <h1>La Palestra</h1>
+    <p>Benvenuto nella pagina dedicata alla palestra. Qui troverai tutte le informazioni sul nostro spazio e le attività.</p>
 </body>
 </html>
